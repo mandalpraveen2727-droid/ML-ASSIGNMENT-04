@@ -5,21 +5,14 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import ( mean_absolute_error, mean_squared_error, r2_score )
 
-# 1. Dataset Creation
 X = np.array([1, 2, 3, 4, 5, 6, 7, 8]).reshape(-1, 1)
 y = np.array([35, 40, 50, 55, 60, 68, 75, 82])
-
-# 2. Train-Test Split
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25,random_state=42)
-
-# 3. Model Initialization and Training
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# 4. Prediction
 y_pred = model.predict(X_test)
 
-# 5. Metrics Calculation
 mae = mean_absolute_error(y_test, y_pred)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
@@ -34,7 +27,6 @@ print(f"MSE  : {mse:.2f}")
 print(f"RMSE : {rmse:.2f}")
 print(f"R2   : {r2:.4f}")
 
-# 6. Plotting
 plt.figure(figsize=(7, 5))
 
 plt.scatter( X, y, color="blue", label="Actual Data" )
