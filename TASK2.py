@@ -1,17 +1,12 @@
-# Import required libraries
 from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import (mean_absolute_error,mean_squared_error,r2_score)
 
-# 1. Load the real-estate dataset
-# Locate Housing.csv in the same folder as this program
 file_path = Path(__file__).parent / "Housing.csv"
 
-# Read the dataset
 df = pd.read_csv(file_path)
-# 2. Explore the dataset
 
 print("First Five Rows:")
 print(df.head())
@@ -23,9 +18,7 @@ print("\nMissing Values:")
 print(df.isnull().sum())
 feature_names = ["area","bedrooms","bathrooms","stories","parking"]
 
-# Multiple input features
 X = df[feature_names]
-# Target variable
 y = df["price"]
 print("\nSelected Features:")
 print(feature_names)
@@ -70,10 +63,8 @@ bathrooms = int(input("Enter number of bathrooms: "))
 stories = int(input("Enter number of stories: "))
 parking = int(input("Enter number of parking spaces: "))
 
-# Create a DataFrame for the new house
 new_house = pd.DataFrame({"area": [area],"bedrooms": [bedrooms],"bathrooms": [bathrooms],"stories": [stories],"parking": [parking]})
 
-# Predict the price of the new house
 predicted_price = model.predict(new_house)[0]
 print("\nNew House Information:")
 print(new_house)
